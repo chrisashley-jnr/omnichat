@@ -51,7 +51,7 @@ export default function Controls({
       </div>
 
       <div className="flex items-center gap-2">
-        {!isActive && status !== 'connected' ? (
+        {!isActive ? (
           <button
             onClick={onStart}
             className="rounded-md bg-signal px-5 py-2 text-sm font-semibold text-ink hover:opacity-90"

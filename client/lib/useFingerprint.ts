@@ -67,6 +67,9 @@ function getWebGLRenderer(): string {
 }
 
 function collectSignals(): string {
+  if (typeof window === 'undefined') {
+    return 'ssr';
+  }
   const signals = [
     getCanvasFingerprint(),
     getWebGLRenderer(),

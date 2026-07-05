@@ -13,6 +13,16 @@ let socketPromise: Promise<Socket> | null = null;
  * can key bans by hashed IP+fingerprint instead of raw socket IDs.
  */
 export function getSocket(): Socket {
+  if (typeof window === 'undefined') {
+    return {
+      on: () => {},
+      off: () => {},
+      emit: () => {},
+      connect: () => {},
+      disconnect: () => {},
+    } as unknown as Socket;
+  }
+
   if (!socket) {
     socket = io(SIGNALING_URL, {
       transports: ['websocket', 'polling'],
